@@ -5,3 +5,4 @@ build/
 *csproj
 *sln
 .vs/
+*~
