@@ -3,12 +3,15 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
+using TypeEncoder;
+
 public class Launcher : MonoBehaviour
 {
 	public GameObject modTray;
 	public GameObject modButtonPrefab;
 	public string[] mods;
-	public List<string> activeMods;
+	public List<Type> activeMods;
+	public Type baseGame;
 	public const string baseGameName = "Base";
 
 	public GameObject resTray;
@@ -23,6 +26,9 @@ public class Launcher : MonoBehaviour
 	void Start ()
 	{
 		xa.debugText = debugText;
+		Type.Init();
+		baseGame = new Type(baseGameName);
+
 		SetMods();
 		SetResolutions();
 		Screen.SetResolution(640, 480, false, 60);
@@ -31,7 +37,7 @@ public class Launcher : MonoBehaviour
 	void SetMods()
 	{
 		mods = Mod.GetMods();
-		activeMods = new List<string>();
+		activeMods = new List<Type>();
 		for (int i = 0; i < mods.Length; i++)
 		{
 			GameObject modButton = (GameObject) Instantiate(modButtonPrefab, modTray.transform);

@@ -2,9 +2,11 @@
 using UnityEngine.UI;
 using System.Collections;
 
+using TypeEncoder;
+
 public class ModButton : MonoBehaviour
 {
-	public string path;
+	public Type path;
 	public string modName;
     public Text text;
 	public Launcher launcher;
